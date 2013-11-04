@@ -1,0 +1,19 @@
+#cards{ 'ng-controller' => 'CardController' }
+  %button.btn.btn-primary{ 'ng-click' => 'shuffleCards()' } Shuffle Cards
+  %button.btn.btn-primary{ 'ng-click' => 'shuffleWorkouts()' } Shuffle Workouts
+
+  .row.text-center
+    .col-md-12
+      %p
+        Next up: {{ topCard().value }} {{ topCard().workout }} ({{ topCard().suite }})
+    / .col-md-6
+    /   %img{ 'ng-src' => '{{topCard().image}}', style: 'margin: -350px -200px;' }
+    / .col-md-6
+    /   %img{ 'ng-hide' => '{{cardsRemain()}}', src: 'img/Blue_Back.svg', style: 'margin: -350px -200px;' }
+
+  %ul.row.list-unstyled.list-inline
+    %li.col-md-3{ 'ng-repeat' => 'card in cards' }
+      {{ card.value }}
+      {{ card.workout }}
+      ({{ card.suite }})
+      %img{ 'ng-src' => '{{card.image}}', width: 100, style: 'margin: -40px -20px;' }
